@@ -1,0 +1,98 @@
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
+
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { href: "#tjanster", label: "Tjänster" },
+    { href: "#priser", label: "Priser" },
+    { href: "#om-oss", label: "Om oss" },
+    { href: "#kontakt", label: "Kontakt" },
+  ];
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-card/95 backdrop-blur-md shadow-lg border-b border-border"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="container flex items-center justify-between py-4">
+        <a href="#" className="flex items-center gap-2">
+          <img
+            src={logo}
+            alt="Elite Clean Service"
+            className="h-12 w-auto"
+          />
+        </a>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#boka"
+            className="gradient-hero text-primary-foreground px-5 py-2.5 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity"
+          >
+            Boka nu
+          </a>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden p-2 text-foreground"
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Nav */}
+      {isMobileMenuOpen && (
+        <nav className="md:hidden bg-card border-t border-border animate-fade-in">
+          <div className="container py-4 flex flex-col gap-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-foreground/80 hover:text-primary py-2 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#boka"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="gradient-hero text-primary-foreground px-5 py-3 rounded-lg font-semibold text-center"
+            >
+              Boka nu
+            </a>
+          </div>
+        </nav>
+      )}
+    </header>
+  );
+};
+
+export default Header;
