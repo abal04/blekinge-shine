@@ -82,7 +82,7 @@ const Footer = () => {
                   href="tel:+46701234567"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  070-123 45 67
+                  076-030 92 38
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -91,7 +91,7 @@ const Footer = () => {
                   href="mailto:info@elitecleanservice.se"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  info@elitecleanservice.se
+                  elitecleanbokning@gmail.com 
                 </a>
               </li>
             </ul>
