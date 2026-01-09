@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Calendar, Clock, CheckCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-// ✅ EmailJS-IDs (UPPDATERAD SERVICE_ID)
+// ✅ EmailJS – EXAKTA ID:n (KLARA)
 const SERVICE_ID = "service_uss6zns";
-const TEMPLATE_ID = "template_nduie69";
+const TEMPLATE_ID = "template_rqgh3nu";
 const PUBLIC_KEY = "VCmcZ0ALN_AjFhYFU";
 
 type FormState = {
@@ -26,9 +26,9 @@ const Booking = () => {
     company: "",
   });
 
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,11 +40,8 @@ const Booking = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 🛡️ Honeypot check: om detta fält fylls i är det nästan alltid en bot
-    if (form.company.trim().length > 0) {
-      console.warn("Spam detected (honeypot filled).");
-      return;
-    }
+    // 🛡️ Spam-skydd (honeypot)
+    if (form.company.trim() !== "") return;
 
     setStatus("sending");
 
@@ -71,8 +68,8 @@ const Booking = () => {
         message: "",
         company: "",
       });
-    } catch (err) {
-      console.error("EmailJS error:", err);
+    } catch (error) {
+      console.error("EmailJS error:", error);
       setStatus("error");
     }
   };
@@ -82,7 +79,6 @@ const Booking = () => {
       id="boka"
       className="py-20 md:py-28 gradient-hero relative overflow-hidden"
     >
-      {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-10 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
         <div className="absolute bottom-10 left-20 w-40 h-40 bg-white/5 rounded-full blur-3xl" />
@@ -90,106 +86,98 @@ const Booking = () => {
 
       <div className="container relative z-10">
         <div className="max-w-3xl mx-auto text-center text-primary-foreground">
-          <span className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <span className="inline-block bg-white/20 px-4 py-2 rounded-full text-sm mb-6">
             Boka din städning
           </span>
 
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Boka enkelt online
           </h2>
 
-          <p className="text-lg text-white/85 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-white/85 mb-12">
             Fyll i formuläret så återkommer vi inom 24 timmar.
           </p>
 
           <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-8 md:p-12 text-left">
             {status === "success" ? (
               <div className="text-center space-y-4">
-                <div className="flex justify-center">
-                  <CheckCircle size={48} className="text-green-300" />
-                </div>
-                <h3 className="font-display text-2xl font-bold">
-                  Tack för din förfrågan!
+                <CheckCircle size={48} className="text-green-300 mx-auto" />
+                <h3 className="text-2xl font-bold">
+                  Tack för din bokning!
                 </h3>
                 <p className="text-white/80">
-                  Vi har mottagit din bokning och kontaktar dig inom 24 timmar.
+                  Vi har mottagit din förfrågan och återkommer inom 24 timmar.
                 </p>
                 <button
-                  type="button"
                   onClick={() => setStatus("idle")}
-                  className="mt-2 bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-white/90 transition"
+                  className="bg-white text-primary px-6 py-3 rounded-lg font-semibold"
                 >
                   Skicka en till
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* 🛡️ Honeypot field (osynligt för människor) */}
+                {/* Honeypot */}
                 <input
                   type="text"
                   name="company"
                   value={form.company}
                   onChange={handleChange}
                   className="hidden"
-                  tabIndex={-1}
-                  autoComplete="off"
                 />
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <input
                     name="firstName"
-                    value={form.firstName}
-                    onChange={handleChange}
-                    type="text"
                     placeholder="Förnamn"
                     required
-                    className="w-full px-4 py-3 rounded-lg text-black"
+                    value={form.firstName}
+                    onChange={handleChange}
+                    className="px-4 py-3 rounded-lg text-black"
                   />
                   <input
                     name="lastName"
-                    value={form.lastName}
-                    onChange={handleChange}
-                    type="text"
                     placeholder="Efternamn"
                     required
-                    className="w-full px-4 py-3 rounded-lg text-black"
+                    value={form.lastName}
+                    onChange={handleChange}
+                    className="px-4 py-3 rounded-lg text-black"
                   />
                 </div>
 
                 <input
                   name="phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  type="tel"
                   placeholder="Telefonnummer"
                   required
+                  value={form.phone}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg text-black"
                 />
 
                 <input
                   name="email"
+                  type="email"
+                  placeholder="E-post"
+                  required
                   value={form.email}
                   onChange={handleChange}
-                  type="email"
-                  placeholder="E-postadress"
-                  required
                   className="w-full px-4 py-3 rounded-lg text-black"
                 />
 
                 <textarea
                   name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Beskriv ditt ärende (t.ex. flyttstäd, storlek, datum)"
+                  placeholder="Beskriv ditt ärende"
                   rows={4}
                   required
+                  value={form.message}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg text-black"
                 />
 
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="w-full bg-white text-primary font-semibold py-3 rounded-lg hover:bg-white/90 transition disabled:opacity-60"
+                  className="w-full bg-white text-primary py-3 rounded-lg font-semibold"
                 >
                   {status === "sending"
                     ? "Skickar..."
@@ -198,20 +186,18 @@ const Booking = () => {
 
                 {status === "error" && (
                   <p className="text-red-200 text-sm">
-                    Något gick fel när formuläret skulle skickas. Testa igen.
+                    Något gick fel. Försök igen.
                   </p>
                 )}
               </form>
             )}
 
-            <div className="flex flex-wrap justify-center gap-4 mt-8">
+            <div className="flex justify-center gap-4 mt-8">
               <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                <Clock size={18} />
-                <span className="text-sm">Svar inom 24h</span>
+                <Clock size={18} /> Svar inom 24h
               </div>
               <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                <Calendar size={18} />
-                <span className="text-sm">Kostnadsfri offert</span>
+                <Calendar size={18} /> Kostnadsfri offert
               </div>
             </div>
           </div>
