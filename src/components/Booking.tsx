@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Calendar, Clock, CheckCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-// ✅ EmailJS – EXAKTA ID:n
-const SERVICE_ID = "service_uss6zns";
-const TEMPLATE_ID = "template_rqqq3nu";
+// ✅ EmailJS – EXAKTA ID:n (som i din bild)
+const SERVICE_ID = "service_akaiwjr";
+const TEMPLATE_ID = "template_rtnguzb";
 const PUBLIC_KEY = "VCmcZ0ALN_AjFhYFU";
 
 type FormState = {
@@ -26,9 +26,9 @@ const Booking = () => {
     company: "",
   });
 
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "success" | "error"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
+    "idle"
+  );
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,10 +37,10 @@ const Booking = () => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // 🛡️ Spam-skydd (honeypot). Om bot fyller i detta fält → gör inget.
+    // 🛡️ Honeypot: om bot fyller i detta fält → avbryt
     if (form.company.trim() !== "") {
       console.warn("Spam detected (honeypot filled).");
       return;
@@ -48,7 +48,7 @@ const Booking = () => {
 
     setStatus("sending");
 
-    // ✅ Debug: så du ser vilka ID:n sidan faktiskt använder
+    // ✅ Debug: bekräfta att rätt ID:n används
     console.log("SENDING WITH:", {
       SERVICE_ID,
       TEMPLATE_ID,
@@ -79,12 +79,10 @@ const Booking = () => {
         company: "",
       });
     } catch (err: any) {
-      // ✅ Mycket tydligare felutskrift (hjälper vid 400)
       console.error("EmailJS error (raw):", err);
       console.error("EmailJS status:", err?.status);
       console.error("EmailJS text:", err?.text);
       console.error("EmailJS message:", err?.message);
-
       setStatus("error");
     }
   };
