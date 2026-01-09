@@ -4,7 +4,7 @@ import emailjs from "@emailjs/browser";
 
 // ✅ EmailJS – EXAKTA ID:n
 const SERVICE_ID = "service_uss6zns";
-const TEMPLATE_ID = "template_rqgh3nu";
+const TEMPLATE_ID = "template_rqqq3nu";
 const PUBLIC_KEY = "VCmcZ0ALN_AjFhYFU";
 
 type FormState = {
