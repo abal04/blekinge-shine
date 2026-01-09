@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Calendar, Clock, CheckCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-// ✅ EmailJS-IDs
-const SERVICE_ID = "service_qwq301u";
+// ✅ EmailJS-IDs (UPPDATERAD SERVICE_ID)
+const SERVICE_ID = "service_uss6zns";
 const TEMPLATE_ID = "template_nduie69";
 const PUBLIC_KEY = "VCmcZ0ALN_AjFhYFU";
 
