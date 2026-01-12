@@ -18,9 +18,9 @@ const pricingCategories = [
     title: "Lägenhetsstädning",
     description: "Engångs- eller regelbunden städning",
     items: [
-      { size: "1 rum och kök", price: "2 000 kr", rutPrice: "1 000 kr" },
-      { size: "2 rum och kök", price: "3 000 kr", rutPrice: "1 500 kr" },
-      { size: "3 rum och kök", price: "4 000 kr", rutPrice: "2 000 kr" },
+      { size: "1 rum och kök", price: "2 500 kr", rutPrice: "1 250 kr" },
+      { size: "2 rum och kök", price: "3 500 kr", rutPrice: "1 750 kr" },
+      { size: "3 rum och kök", price: "4 500 kr", rutPrice: "2 250 kr" },
     ],
     featured: false,
   },
