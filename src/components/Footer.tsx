@@ -94,7 +94,7 @@ const Footer = () => {
       <div className="border-t border-border">
         <div className="container py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© {currentYear} Elite Clean Service. Alla rättigheter förbehållna.</p>
-          <p>@cleanserviceblekinge</p>
+          <p>@cleanserviceblekingec</p>
         </div>
       </div>
     </footer>
