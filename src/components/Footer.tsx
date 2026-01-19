@@ -77,6 +77,15 @@ const Footer = () => {
                 </span>
               </li>
               <li className="flex items-center gap-3">
+                <Phone size={18} className="text-primary shrink-0" />
+                <a
+                  href="tel:+46701234567"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  073-759 98 71
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
                 <Mail size={18} className="text-primary shrink-0" />
                 <a
                   href="mailto:elitecleanbokning@gmail.com" 

@@ -173,7 +173,7 @@ const Booking = () => {
                   placeholder="Telefonnummer"
                   required
                   className="w-full px-4 py-3 rounded-lg text-black"
-                />
+                /> 
 
                 <input
                   name="email"
