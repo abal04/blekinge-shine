@@ -1,46 +1,51 @@
-import { Home, Sparkles, Truck } from "lucide-react";
+import { Home, Sparkles, Truck, Building2 } from "lucide-react";
 
 const services = [
   {
     icon: Home,
-    title: "Flyttstädning",
-    description:
-      "Professionell städning av lägenheter och bostäder vid flytt. Vi lämnar bostaden skinande ren så du kan fokusera på ditt nya hem.",
-    features: ["Kvalitetsgaranti", "Fasta priser", "Flexibla tider"],
-  },
-  {
-    icon: Sparkles,
-    title: "Lägenhetsstädning",
+    title: "Hemstädning",
     description:
       "Regelbunden eller engångsstädning av lägenheter och privata hem. Anpassad efter dina behov och önskemål.",
     features: ["Personlig service", "Miljövänliga produkter", "Pålitlig personal"],
   },
   {
+    icon: Building2,
+    title: "Företagsstädning",
+    description:
+      "Professionell städning för kontor, butiker och företag. Flexibla tider, skräddarsydda upplägg och hög kvalitet.",
+    features: ["Skräddarsydda avtal", "Miljövänliga produkter", "Pålitlig personal"],
+  },
+  {
     icon: Truck,
     title: "Flytthjälp",
     description:
-      "Erfaren flytthjälp inom och utanför orten. Vi hjälper dig med tunga lyft och transport så flytten går smidigt.",
-    features: ["2 personer ingår", "Egen utrustning", "Försäkrad flytt"],
+      "Smidig och trygg flytthjälp med packning, transport och bärhjälp. Vi tar hand om det tunga så du slipper.",
+    features: ["Erfarna flyttteam", "Trygg transport", "Flexibla tider"],
+  },
+  {
+    icon: Sparkles,
+    title: "Storstädning",
+    description:
+      "Grundlig storstädning för ett skinande rent hem. Perfekt inför högtider, efter renovering eller när du vill börja om fräscht.",
+    features: ["Extra noggrant", "Detaljfokus", "Miljövänliga produkter"],
   },
 ];
 
 const Services = () => {
   return (
-    <section id="tjanster" className="py-20 md:py-28 bg-background">
-      <div className="container">
-        <div className="text-center mb-16">
-          <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-3">
+    <section id="services" className="py-24 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="font-display text-4xl font-bold text-foreground mb-6">
             Våra tjänster
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Vad vi erbjuder
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Vi erbjuder ett komplett utbud av städ- och flyttjänster i hela Blekinge
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            Vi erbjuder professionell service med fokus på kvalitet, trygghet och
+            nöjda kunder.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <article
               key={service.title}
