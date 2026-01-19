@@ -1,4 +1,4 @@
-import { Home, Sparkles, Truck } from "lucide-react";
+import { Home, Sparkles, Truck, Building2 } from "lucide-react";
 
 const services = [
   {
@@ -14,6 +14,13 @@ const services = [
     description:
       "Regelbunden eller engångsstädning av lägenheter och privata hem. Anpassad efter dina behov och önskemål.",
     features: ["Personlig service", "Miljövänliga produkter", "Pålitlig personal"],
+  },
+  {
+    icon: Building2,
+    title: "Företagsstädning",
+    description:
+      "Professionell städning för kontor, butiker och företag. Flexibla tider, skräddarsydda upplägg och hög kvalitet.",
+    features: ["Skräddarsydda avtal", "Miljövänliga produkter", "Pålitlig personal"],
   },
   {
     icon: Truck,
@@ -40,7 +47,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <article
               key={service.title}
