@@ -101,10 +101,13 @@ const Footer = () => {
 
       {/* Bottom bar */}
       <div className="border-t border-border">
-        <div className="container py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© {currentYear} Elite Clean Service. Alla rättigheter förbehållna.</p>
-          <p>@cleanserviceblekingec</p>
-        </div>
+       <div className="container py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+  <div className="flex flex-col items-center sm:items-start">
+    <p>© {currentYear} Elite Clean Service. Alla rättigheter förbehållna.</p>
+    <p>Elite Clean Service drivs av Abdulelah Aljendi (Org.nr: 040101-XXXX)</p>
+  </div>
+  <p>@cleanserviceblekingec</p>
+</div>
       </div>
     </footer>
   );
