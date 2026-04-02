@@ -104,7 +104,7 @@ const Footer = () => {
        <div className="container py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
   <div className="flex flex-col items-center sm:items-start">
     <p>© {currentYear} Elite Clean Service. Alla rättigheter förbehållna.</p>
-    <p>Elite Clean Service drivs av Abdulelah Aljendi (Org.nr: 040101-XXXX)</p>
+    <p>Elite Clean Service drivs av Abdulelah Aljendi (Org.nr: 040101-1697)</p>
   </div>
   <p>@cleanserviceblekingec</p>
 </div>
